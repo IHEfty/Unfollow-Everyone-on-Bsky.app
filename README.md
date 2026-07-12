@@ -1,4 +1,4 @@
-# Bluesky Unfollow Tool
+# Bluesky Unfollow All
 
 > A simple toolkit for unfollowing Bluesky users, including **hidden followers** that don't always appear in the normal Bluesky interface.
 
