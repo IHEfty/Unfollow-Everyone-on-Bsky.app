@@ -20,7 +20,10 @@ Install dependencies:
 ```bash
 npm i
 ```
-
+> or
+```bash
+npm install csv-parser
+```
 Then edit your username and app password inside the script:
 
 ```js
