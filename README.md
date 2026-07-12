@@ -22,7 +22,7 @@ npm i
 ```
 > or
 ```bash
-npm install csv-parser
+npm install @atproto/api csv-parser
 ```
 Then edit your username and app password inside the script:
 
