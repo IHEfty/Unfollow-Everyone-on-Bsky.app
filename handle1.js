@@ -1,40 +1,37 @@
 const fs = require("fs");
-const csv = require("csv-parser");
 
 const inputFile = "new.txt";
-const outputFile = "handles.txt";
+const outputFile = "handle.txt";
 
-// Optional: Add handles here to exclude.
-// Leave this array empty ([]) if you don't want to exclude anyone.
+// Handles to ignore (case-insensitive)
 const EXCLUDED_HANDLES = new Set([
     // "example.bsky.social",
     // "friend.bsky.social",
     // "my-alt.bsky.social",
+
 ].map(h => h.toLowerCase()));
 
+const text = fs.readFileSync(inputFile, "utf8");
+
+const matches = text.match(/@[a-zA-Z0-9._-]+\.[a-zA-Z0-9.-]+/g) || [];
+
+const seen = new Set();
 const handles = [];
 
-fs.createReadStream(inputFile)
-    .pipe(csv())
-    .on("data", (row) => {
-        if (!row.handle) return;
+for (const match of matches) {
+    const handle = match.substring(1).trim(); // Remove @
 
-        const handle = row.handle.trim();
+    if (EXCLUDED_HANDLES.has(handle.toLowerCase())) {
+        console.log(`Skipped: ${handle}`);
+        continue;
+    }
 
-        // Skip excluded handles (only if any exist)
-        if (EXCLUDED_HANDLES.has(handle.toLowerCase())) {
-            console.log(`Skipped: ${handle}`);
-            return;
-        }
-
+    if (!seen.has(handle.toLowerCase())) {
+        seen.add(handle.toLowerCase());
         handles.push(handle);
-    })
-    .on("end", () => {
-        fs.writeFileSync(outputFile, handles.join("\n"), "utf8");
+    }
+}
 
-        console.log(`Extracted ${handles.length} handles.`);
+fs.writeFileSync(outputFile, handles.join("\n"), "utf8");
 
-        if (EXCLUDED_HANDLES.size > 0) {
-            console.log(`Excluded ${EXCLUDED_HANDLES.size} handle(s).`);
-        }
-    });
+console.log(`Extracted ${handles.length} unique handles.`);
