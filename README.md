@@ -8,7 +8,7 @@
 
 * Unfollow everyone (`unfollow_all.js`)
 * Unfollow only accounts from a custom handle list (`unfollow.js`)
-* Extract handles from a SkeetBeaver follower export (`handle.js`)
+* Extract handles from a Bskycheck follower export (`handle.js`)
 * Fast, lightweight, and easy to use
 
 ---
@@ -20,10 +20,7 @@ Install dependencies:
 ```bash
 npm i
 ```
-> or
-```bash
-npm install @atproto/api csv-parser
-```
+
 Then edit your username and app password inside the script:
 
 ```js
@@ -158,7 +155,7 @@ The script will:
 ## Workflow
 
 ```
-SkeetBeaver Export
+  Bskycheck.com
         │
         ▼
      new.txt
