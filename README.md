@@ -45,15 +45,55 @@ node unfollow_all.js
 > Sometimes Bluesky doesn't show every account in your followers/following list.
 If that's happening, follow these steps.
 
-### Step 1 > Export your list
->Go to:
-https://skeetbeaver.pages.dev/graph/followers
-Enter your Bluesky username.
-The website will generate a long CSV-like list that looks something like this:
+### Step 1 > Export Your Following List
+
+Go to:
+
+> https://bskycheck.com/followstat.php
+
+1. Enter your **Bluesky username**.
+2. Wait for the page to finish loading your following list.
+3. Select(Ctrl + A) everything on the page and copy(Ctrl + C) the entire page's text.
+4. Paste it into a file named **`new.txt`**.
+
+The copied text will look similar to this:
 
 ```text
-"252",,"did:plc:5pzufef4if7s47v7y7j27ysa","makithappen.bsky.social","2026-06-08T00:46:30.264Z","2026-06-11T21:07:14.161Z","Makit Happen","🇬🇦🔞 U","1","0","[]","0","0",...
+Type
+🆕
+❌
+Zai Sarel
+Zai Sarel
+@zaisarel.bsky.social
+Followers
+637
+Following
+1,439
+Posts
+3,405
+
+Type
+👤
+❌
+Zean Lain
+Zean Lain
+@zeanlain.bsky.social
+Followers
+2,757
+Following
+1,785
+Posts
+807
+
+...
 ```
+
+Next, run the **handle extractor** script. It will automatically:
+
+* Extract every Bluesky handle (e.g. `@username.bsky.social`)
+* Remove duplicate entries
+* Ignore any handles listed in your exclusion list
+* Save the results to **`handle.txt`**
 
 Don't worry if it looks messy that's normal.
 
