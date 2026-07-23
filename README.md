@@ -84,14 +84,6 @@ Posts
 
 ...
 ```
-
-Next, run the **handle extractor** script. It will automatically:
-
-* Extract every Bluesky handle (e.g. `@username.bsky.social`)
-* Remove duplicate entries
-* Ignore any handles listed in your exclusion list
-* Save the results to **`handle.txt`**
-
 Don't worry if it looks messy that's normal.
 
 ---
@@ -117,12 +109,12 @@ Run:
 ```bash
 node handle.js
 ```
+It will automatically:
 
-This will automatically create:
-
-```
-handles.txt
-```
+* Extract every Bluesky handle (e.g. `@username.bsky.social`)
+* Remove duplicate entries
+* Ignore any handles listed in your exclusion list
+* Save the results to **`handle.txt`**
 
 Example output:
 
